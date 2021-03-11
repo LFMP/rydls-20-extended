@@ -60,7 +60,8 @@ for (i, row) in metadata_csv.iterrows():
   new_filename_ext = "figure1-P" + str(pid) + "_" + str(offset)
   old_file = os.path.join(dest_dir, filename + ext)
   new_file = os.path.join(dest_dir, new_filename_ext + ext)
-  os.rename(old_file, new_file)
+  if os.path.exists(new_file):
+    os.remove(new_file)
 
   # Check if there are any mask provided for this image
   mask_filename = filename + ".png"

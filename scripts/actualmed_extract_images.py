@@ -54,8 +54,9 @@ for (i, row) in metadata_csv.iterrows():
   new_filename = "actualmed-P" + str(pid) + "_" + str(offset)
   old_file = os.path.join(dest_dir, filename)
   new_file = os.path.join(dest_dir, new_filename + ext)
-  if not os.path.exists(new_file):
-    os.rename(old_file, new_file)
+  if os.path.exists(new_file):
+    os.remove(new_file)
+  os.rename(old_file, new_file)
 
   # Check if there are any mask provided for this image
   mask_filename = os.path.splitext(filename)[0] + ".png"
