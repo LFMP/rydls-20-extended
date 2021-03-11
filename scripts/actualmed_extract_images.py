@@ -5,7 +5,7 @@ import pandas as pd
 
 # I'm assuming that this repo does not contain repeated images from Cohen
 
-actual_path = "C:\Users\luizf\Documents\GitHub\rydls-20-extended"
+actual_path = os.getcwd()
 if not os.path.exists(
     os.path.join(actual_path, "Actualmed-COVID-chestxray-dataset")):
   os.system(
@@ -51,7 +51,7 @@ for (i, row) in metadata_csv.iterrows():
     offset = 0
 
   ext = os.path.splitext(filename)[-1]
-  new_filename = "P" + str(pid) + "_" + str(offset)
+  new_filename = "actualmed-P" + str(pid) + "_" + str(offset)
   old_file = os.path.join(dest_dir, filename)
   new_file = os.path.join(dest_dir, new_filename + ext)
   if not os.path.exists(new_file):
