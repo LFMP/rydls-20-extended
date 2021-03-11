@@ -1,10 +1,11 @@
-import pandas as pd
-import shutil
 import os
+import shutil
+
+import pandas as pd
 
 # I'm assuming that this repo does not contain repeated images from Cohen
 
-actual_path = os.getcwd()
+actual_path = "C:\Users\luizf\Documents\GitHub\rydls-20-extended"
 if not os.path.exists(
     os.path.join(actual_path, "Actualmed-COVID-chestxray-dataset")):
   os.system(
@@ -19,6 +20,11 @@ outputdir = os.path.join(actual_path, "datasets/Actualmed")
 if os.path.isdir(outputdir):
   shutil.rmtree(outputdir)
 
+# Check if destination folder exists, if not create it
+dest_dir = os.path.join(outputdir, "COVID-19")
+if not os.path.isdir(dest_dir):
+  os.makedirs(dest_dir)
+
 mask_dir = os.path.join(outputdir, "Masks")
 if not os.path.isdir(mask_dir):
   os.makedirs(mask_dir)
@@ -32,11 +38,6 @@ for (i, row) in metadata_csv.iterrows():
   filename = row["imagename"]
 
   image_path = os.path.join(imagedir, filename)
-
-  # Check if destination folder exists, if not create it
-  dest_dir = os.path.join(outputdir, "COVID-19")
-  if not os.path.isdir(dest_dir):
-    os.makedirs(dest_dir)
 
   # Copy image
   shutil.copy2(image_path, dest_dir)
