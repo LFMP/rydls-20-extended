@@ -1,18 +1,19 @@
-
 import pandas as pd
 import shutil
 import os
-import math
-import re
 
 # I'm assuming that this repo does not contain repeated images from Cohen
 
 actual_path = os.getcwd()
-if not os.path.exists(os.path.join(actual_path,"Actualmed-COVID-chestxray-dataset")):
-  os.system("git clone https://github.com/agchung/Actualmed-COVID-chestxray-dataset.git")
-metadata = os.path.join(actual_path,"Actualmed-COVID-chestxray-dataset/metadata.csv")
-imagedir = os.path.join(actual_path,"Actualmed-COVID-chestxray-dataset/images")
-outputdir = os.path.join(actual_path,"datasets/Actualmed")
+if not os.path.exists(
+    os.path.join(actual_path, "Actualmed-COVID-chestxray-dataset")):
+  os.system(
+      "git clone https://github.com/agchung/Actualmed-COVID-chestxray-dataset.git"
+  )
+metadata = os.path.join(actual_path,
+                        "Actualmed-COVID-chestxray-dataset/metadata.csv")
+imagedir = os.path.join(actual_path, "Actualmed-COVID-chestxray-dataset/images")
+outputdir = os.path.join(actual_path, "datasets/Actualmed")
 
 # Remove output dir if present
 if os.path.isdir(outputdir):
@@ -25,7 +26,6 @@ if not os.path.isdir(mask_dir):
 metadata_csv = pd.read_csv(metadata)
 
 for (i, row) in metadata_csv.iterrows():
-
   if row["finding"] != "COVID-19":
     continue
 
@@ -64,4 +64,4 @@ for (i, row) in metadata_csv.iterrows():
     old_file = os.path.join(mask_dir, mask_filename)
     new_file = os.path.join(mask_dir, new_filename + ".png")
     os.rename(old_file, new_file)
-shutil.rmtree(os.path.join(actual_path,"Actualmed-COVID-chestxray-dataset"))
+shutil.rmtree(os.path.join(actual_path, "Actualmed-COVID-chestxray-dataset"))
