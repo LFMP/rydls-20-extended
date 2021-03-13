@@ -50,7 +50,7 @@ for target in ["Normal", "No Lung Opacity / Not Normal", "Lung Opacity"]:
   if not os.path.isdir(dest_dir):
     os.makedirs(dest_dir)
 
-  for pid in range(nrows)
+  for pid in range(nrows):
     full_pid = local_df["patientId"][pid]
     dcm_file = os.path.join(extractdir,
                             "stage_2_train_images/%s.dcm" % full_pid)
