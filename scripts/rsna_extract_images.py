@@ -19,8 +19,8 @@ extractdir = os.path.join(actual_path, "rsna-pneumonia-detection-challenge")
 if os.path.isdir(outputdir):
   shutil.rmtree(outputdir)
 
-metadata_train = os.path.join(outputdir, "stage_2_train_labels.csv")
-metadata_detailed = os.path.join(outputdir, "stage_2_detailed_class_info.csv")
+metadata_train = os.path.join(extractdir, "stage_2_train_labels.csv")
+metadata_detailed = os.path.join(extractdir, "stage_2_detailed_class_info.csv")
 
 if not os.path.exists(file_path):
   kaggle.api.competition_download_files('rsna-pneumonia-detection-challenge',
