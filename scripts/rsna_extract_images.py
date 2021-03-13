@@ -5,7 +5,7 @@ import cv2
 import kaggle
 import pandas as pd
 import pydicom
-import tqdm
+from tqdm import trange
 
 kaggle.api.authenticate()
 actual_path = os.getcwd()
