@@ -132,6 +132,7 @@ dmypy.json
 # Images folder
 Dataset/
 datasets/
+images/
 *.jpeg
 script/datasets
 script/Images
