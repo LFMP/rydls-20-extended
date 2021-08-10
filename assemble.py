@@ -26,7 +26,7 @@ covid_datasets_path = [
     os.path.join(cohen, 'Pneumonia/Viral/COVID-19'),
     os.path.join(figure1, 'COVID-19'),
     os.path.join(COVID19_R_Dataset, 'COVID'),
-    cvo19_nii,
+    os.path.join(cvo19_nii, 'COVID-19')
 ]
 for folder in covid_datasets_path:
   if os.path.exists(folder):
@@ -94,3 +94,5 @@ unknown_datasets_path = [
 for folder in unknown_datasets_path:
   for filename in os.listdir(folder):
     shutil.move(os.path.join(folder, filename), unknown_path)
+
+shutil.rmtree(os.path.join(actual_path, "datasets"))
