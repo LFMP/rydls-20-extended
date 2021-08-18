@@ -10,7 +10,6 @@ def build(actual_path):
   kaggle.api.authenticate()
   actual_path = os.getcwd()
   filename = 'covid19-radiography-database.zip'
-  file_path = os.path.join(actual_path, filename)
   outputdir = os.path.join(actual_path, "datasets/COVID-19_Radiography_Dataset")
   extractdir = os.path.join(actual_path, "COVID-19_Radiography_Dataset")
 
