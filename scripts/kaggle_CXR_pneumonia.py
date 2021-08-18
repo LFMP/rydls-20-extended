@@ -1,5 +1,4 @@
 import os
-import re
 import shutil
 
 import kaggle
@@ -7,9 +6,7 @@ import kaggle
 
 def build(actual_path):
   kaggle.api.authenticate()
-  actual_path = os.getcwd()
   filename = 'chest-xray-pneumonia.zip'
-  file_path = os.path.join(actual_path, filename)
   outputdir = os.path.join(actual_path, "datasets/chest_xray_pneumonia")
   extractdir = os.path.join(actual_path, "chest_xray")
 
