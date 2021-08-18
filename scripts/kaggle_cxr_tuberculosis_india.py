@@ -15,7 +15,7 @@ def build(actual_path):
   if not os.path.exists(extractdir):
     kaggle.api.dataset_download_files(
         'raddar/chest-xrays-tuberculosis-from-india',
-        path=actual_path,
+        path=extractdir,
         quiet=False,
         unzip=True)
 
@@ -29,6 +29,8 @@ def build(actual_path):
 
   imagedir = os.path.join(extractdir, "images/images")
   dest_dir = os.path.join(outputdir, "tuberculosis")
+  if not os.path.exists(dest_dir):
+    os.makedirs(dest_dir)
 
   pid = 0
   for filename in df["study_id"].to_numpy():
